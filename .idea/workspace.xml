@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="89004b8f-64a6-4651-96fe-dfee3f4088f6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Gemfile" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/LICENSE.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Rakefile" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/capybara-harness.gemspec" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/capybara-harness.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <ignored path="capybara-harness.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,7 +33,7 @@
       <file leaf-file-name="README.md" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="28" selection-start="175" selection-end="338" vertical-scroll-proportion="0.125">
+            <state line="21" column="36" selection-start="1003" selection-end="1003" vertical-scroll-proportion="0.65625">
               <folding />
             </state>
           </provider>
@@ -213,7 +207,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="28" selection-start="175" selection-end="338" vertical-scroll-proportion="0.125">
+        <state line="21" column="36" selection-start="1003" selection-end="1003" vertical-scroll-proportion="0.65625">
           <folding />
         </state>
       </provider>
