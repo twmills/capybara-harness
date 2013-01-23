@@ -1,12 +1,10 @@
 require 'active_support/core_ext/class'
-require 'spec/support/capybara/dom/configuration'
 require 'forwardable'
 
 class Capybara::Harness::DomHarness
 
   extend Forwardable
   include Capybara::DSL
-  include Rails.application.routes.url_helpers
 
   attr_accessor :subject
 
@@ -22,12 +20,12 @@ class Capybara::Harness::DomHarness
                  :click_action
 
   def initialize(values = {})
-    self.subject = Capybara::Dom::Subject.new(self.class.configuration, values)
+    self.subject = Capybara::Harness::Dom::Subject.new(self.class.configuration, values)
     create_aliases!
   end
 
   def self.configuration
-    @configuration = Capybara::Dom::Configuration.new(self) unless @configuration
+    @configuration = Capybara::Harness::Dom::Configuration.new(self) unless @configuration
     @configuration
   end
 
@@ -50,8 +48,8 @@ class Capybara::Harness::DomHarness
       self
     end
 
-    singleton.send(:alias_method, selector, element)
-    singleton.send(:alias_method, "#{selector}_list", list)
+    singleton.send(:alias_method, selector.to_sym, :element)
+    singleton.send(:alias_method, "#{selector}_list".to_sym, :list)
   end
 
 end

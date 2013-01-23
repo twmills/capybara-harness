@@ -4,12 +4,12 @@ module Capybara::Harness::Dom
 
     attr_accessor :selector, :attributes, :finder_attr_name, :values, :form
 
-    def initialize(configuration, values = nil)
+    def initialize(configuration, values = {})
       self.selector = configuration.selector
       self.finder_attr_name = configuration.finder_attr_name
       self.attributes = configuration.attributes
       self.form = configuration.form
-      self.reset!(values)
+      reset!(values)
     end
 
     # Public: Returns the value of the finder attribute for this subject.

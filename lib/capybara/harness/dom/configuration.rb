@@ -10,11 +10,11 @@ module Capybara::Harness::Dom
 
     def add_attribute(name, options = {})
       self.finder_attr_name = name.to_sym if options.has_key?(:finder) && options[:finder] == true
-      self.attributes[name] = Capybara::Dom::Attribute.new(name, options)
+      self.attributes[name] = Capybara::Harness::Dom::Attribute.new(name, options)
     end
 
     def set_form(name = nil, block = nil)
-      form = Capybara::Dom::Form.new(name)
+      form = Capybara::Harness::Dom::Form.new(name)
       block.call(form) unless block.nil?
       self.form = form
     end

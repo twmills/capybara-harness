@@ -9,11 +9,7 @@ module Capybara::Harness::Dom
       self.contents = options.delete(:contents)
     end
 
-    def visible?(values)
-
-    end
-
-    def extract_value(values)
+    def extract_value(values = {})
       values = HashWithIndifferentAccess.new(values)
       if contents
         contents.call(values)
