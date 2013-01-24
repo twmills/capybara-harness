@@ -37,7 +37,7 @@ module Capybara::Harness::Dom
     def fill_form(new_values = {})
       new_values = HashWithIndifferentAccess.new(new_values)
       form.fill(new_values)
-      self.reset!(new_values)
+      reset!(new_values)
     end
 
     # Public: Returns true if the subject's element is present on the page.
