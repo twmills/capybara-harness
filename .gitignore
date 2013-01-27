@@ -2,6 +2,7 @@
 *.rbc
 .bundle
 .idea
+.rvmrc
 .config
 .yardoc
 Gemfile.lock
