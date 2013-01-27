@@ -10,7 +10,6 @@ module Capybara::Harness::Dom
     end
 
     def derive_value(values = {})
-      puts "Finding value for #{name}"
       if derived_value_block
         derived_value_block.call(values)
       else
