@@ -2,19 +2,19 @@ module Capybara::Harness::Dom
   class Attribute
     include Capybara::DSL
 
-    attr_accessor :name, :contents
+    attr_accessor :name, :derived_value_block
 
     def initialize(name, options = {})
       self.name = name
-      self.contents = options.delete(:contents)
+      self.derived_value_block = options.delete(:derived_value_block)
     end
 
-    def extract_value(values = {})
-      values = HashWithIndifferentAccess.new(values)
-      if contents
-        contents.call(values)
+    def derive_value(values = {})
+      puts "Finding value for #{name}"
+      if derived_value_block
+        derived_value_block.call(values)
       else
-        values[name].to_s
+        values.fetch(name, "")
       end
     end
   end

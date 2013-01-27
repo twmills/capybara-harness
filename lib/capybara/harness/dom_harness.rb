@@ -20,36 +20,48 @@ class Capybara::Harness::DomHarness
                  :click_action
 
   def initialize(values = {})
-    self.subject = Capybara::Harness::Dom::Subject.new(self.class.configuration, values)
-    create_aliases!
+    self.subject = Capybara::Harness::Dom::Subject.new(self.class.dom_reader, self.class.dom_writer, values)
+    create_aliases!(self.class.dom_reader.name)
   end
 
-  def self.configuration
-    @configuration = Capybara::Harness::Dom::Configuration.new(self) unless @configuration
-    @configuration
-  end
+  [:reader, :writer].each do |m|
+    method_name = "dom_#{m}"
+    instance_variable_name = "@#{method_name}"
+    class_name = "Capybara::Harness::Dom::#{m.capitalize}"
 
-  def self.dom_selector(name)
-    self.configuration.selector = name
-  end
+    define_singleton_method method_name do
+      unless instance_variable_get(instance_variable_name)
+        instance_variable_set(instance_variable_name, constantize(class_name).new)
+      end
+      instance_variable_get(instance_variable_name)
+    end
 
-  def self.define_form(name = nil, &block)
-    self.configuration.set_form(name, block)
-  end
-
-  def self.dom_attr(name, options = {})
-    self.configuration.add_attribute(name, options)
+    define_singleton_method("define_#{m}") do |name = nil, &block|
+      send(method_name).name = name
+      block.call(send(method_name)) unless block.nil?
+    end
   end
 
   private
 
-  def create_aliases!
+  def self.constantize(camel_cased_word)
+    names = camel_cased_word.split('::')
+    names.shift if names.empty? || names.first.empty?
+
+    constant = Object
+    names.each do |name|
+      constant = constant.const_defined?(name) ? constant.const_get(name) : constant.const_missing(name)
+    end
+    constant
+  end
+
+  def create_aliases!(name)
     singleton = class << self;
       self
     end
 
-    singleton.send(:alias_method, selector.to_sym, :element)
-    singleton.send(:alias_method, "#{selector}_list".to_sym, :list)
+    singleton.send(:alias_method, name, :element)
+    singleton.send(:alias_method, "#{name}_list".to_sym, :list)
   end
 
 end

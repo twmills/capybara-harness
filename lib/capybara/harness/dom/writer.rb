@@ -1,9 +1,8 @@
 module Capybara::Harness::Dom
-  class FieldSet
+  class Writer
     attr_accessor :name, :fields
 
-    def initialize(name)
-      self.name = name
+    def initialize
       self.fields = []
     end
 
@@ -16,17 +15,8 @@ module Capybara::Harness::Dom
     end
 
     def fill(attrs = {})
-      if name
-        within("##{name}") { fill_fields(attrs) }
-      else
-        fill_fields(attrs)
-      end
-    end
-
-    private
-
-    def fill_fields(attrs)
       fields.each { |f| f.fill(attrs) }
     end
+
   end
 end
