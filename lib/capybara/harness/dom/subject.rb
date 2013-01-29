@@ -17,8 +17,8 @@ module Capybara::Harness::Dom
     #
     # Returns nothing of interest.
     def fill_form(new_values = {})
-      dom_writer.fill(new_values)
       reset!(new_values)
+      dom_writer.fill(values)
     end
 
     # Public: Returns true if the subject's element is present on the page.
@@ -46,7 +46,7 @@ module Capybara::Harness::Dom
     end
 
     def reset!(new_values = {})
-      self.values = new_values
+      self.values = values.merge(new_values)
       @element = nil
       @list = nil
     end
