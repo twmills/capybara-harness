@@ -49,6 +49,8 @@ module Capybara::Harness::Dom
     end
 
     def has_attrs?(values = {})
+      return false unless page.has_css?(".#{name} .#{finder_attr_name}", :text => finder_attr.derive_value(values))
+
       node = find_element(values)
       attributes.each do |attr_name, attr|
         text = attr.derive_value(values)
