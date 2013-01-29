@@ -37,7 +37,7 @@ module Capybara::Harness::Dom
     end
 
     def extract_value(attrs)
-      attrs = attrs[through] if attrs.has_key?(through)
+      attrs = attrs[through] unless through.nil?
       attrs[name.to_sym]
     end
 
