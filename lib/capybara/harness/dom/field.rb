@@ -12,12 +12,12 @@ module Capybara::Harness::Dom
     end
 
     def fill(attrs = {})
-      if has_attribute?(attrs)
-        value = extract_value(attrs)
-        case data_type
-          when :string then fill_in(label, :with => value)
-          when :select then select(value, :from => label)
-        end
+      value = extract_value(attrs)
+      case data_type
+        when :string then
+          fill_in(label, :with => value)
+        when :select then
+          select(value, :from => label)
       end
     end
 
