@@ -43,5 +43,10 @@ module Capybara::Harness::Dom
       attrs[name.to_sym]
     end
 
+    def extract_option_as_sym(option_name, options)
+      option = options.delete(option_name)
+      option.nil? ? nil : option.to_sym
+    end
+
   end
 end
