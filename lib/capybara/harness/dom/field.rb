@@ -3,17 +3,18 @@ module Capybara::Harness::Dom
     include Capybara::DSL
 
     attr_accessor :name, :label, :data_type, :through
+    attr_accessor :name, :label, :as, :through
 
     def initialize(options = {})
       self.name = options.delete(:name)
       self.label = options.fetch(:label, name.to_s.titleize)
-      self.data_type = options.fetch(:data_type, :string)
       self.through = options.delete(:through)
+      @as = options.fetch(:as, :string).to_sym
     end
 
     def fill(attrs = {})
       value = extract_value(attrs)
-      case data_type
+      case as
         when :string then
           fill_in(label, :with => value)
         when :select then
