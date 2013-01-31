@@ -5,10 +5,10 @@ module Capybara::Harness::Dom
     attr_accessor :name, :label, :data_type, :through
     attr_accessor :name, :label, :as, :through
 
-    def initialize(options = {})
-      self.name = options.delete(:name)
-      self.label = options.fetch(:label, name.to_s.titleize)
-      self.through = options.delete(:through)
+    def initialize(name, options = {})
+      @name = name.to_sym
+      @through = extract_option_as_sym(:through, options)
+      @label = options.fetch(:label, name.to_s.titleize)
       @as = options.fetch(:as, :string).to_sym
     end
 
@@ -24,10 +24,6 @@ module Capybara::Harness::Dom
 
     def through
       @through.to_sym if @through
-    end
-
-    def name
-      @name.to_sym
     end
 
     private
