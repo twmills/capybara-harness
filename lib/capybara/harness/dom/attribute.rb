@@ -1,6 +1,5 @@
 module Capybara::Harness::Dom
   class Attribute
-    include Capybara::DSL
 
     attr_accessor :name, :derived_value_block
 
