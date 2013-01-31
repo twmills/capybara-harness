@@ -1,4 +1,5 @@
 *.gem
+capybara-*.html
 *.rbc
 .bundle
 .idea
