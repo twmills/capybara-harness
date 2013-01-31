@@ -19,6 +19,12 @@ module Capybara::Harness::Dom
           fill_in(label, :with => value)
         when :select then
           select(value, :from => label)
+        when :file
+          attach_file(label, value)
+        when :radio
+          choose(label)
+        when :checkbox
+          value == true ? check(label) : uncheck(label)
       end
     end
 
