@@ -2,7 +2,6 @@ module Capybara::Harness::Dom
   class Field
     include Capybara::DSL
 
-    attr_accessor :name, :label, :data_type, :through
     attr_accessor :name, :label, :as, :through
 
     def initialize(name, options = {})
