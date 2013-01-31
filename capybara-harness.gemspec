@@ -18,6 +18,8 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
 
   gem.add_development_dependency('rspec')
+  gem.add_development_dependency('launchy')
   gem.add_runtime_dependency('capybara', '>= 1.1')
+  gem.add_development_dependency("sinatra", [">= 0.9.4"])
   gem.add_runtime_dependency(%q<activesupport>, [">= 3.0"])
 end
