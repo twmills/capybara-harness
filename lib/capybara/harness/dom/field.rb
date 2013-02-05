@@ -7,7 +7,7 @@ module Capybara::Harness::Dom
     def initialize(name, options = {})
       @name = name.to_sym
       @through = extract_option_as_sym(:through, options)
-      @label = options.fetch(:label, name.to_s.titleize)
+      @label = options.fetch(:label, name.to_s.humanize)
       @as = options.fetch(:as, :string).to_sym
     end
 
