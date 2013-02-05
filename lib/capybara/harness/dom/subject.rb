@@ -42,7 +42,7 @@ module Capybara::Harness::Dom
     # Public: Finds and clicks the element's link that is assigned the data attribute for the supplied action. Common actions
     # include :edit or :delete.
     def click_action(action)
-      dom_reader.find_element.find("[data-action='#{action}']").click
+      dom_reader.find_element(self.values).find("[data-action='#{action}']").click
     end
 
     def reset!(new_values = {})
