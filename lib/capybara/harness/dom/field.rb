@@ -22,8 +22,14 @@ module Capybara::Harness::Dom
           attach_file(label, value)
         when :radio
           choose(label)
-        when :checkbox
-          value == true ? check(label) : uncheck(label)
+        when :checkbox, :checkboxes
+          if value.is_a?(Hash)
+            value.each { |label, v| checkbox(v, label) }
+          elsif value.is_a?(Array)
+            value.each { |v| checkbox(v) }
+          else
+            check(value, label)
+          end
       end
     end
 
@@ -46,6 +52,11 @@ module Capybara::Harness::Dom
     def extract_option_as_sym(option_name, options)
       option = options.delete(option_name)
       option.nil? ? nil : option.to_sym
+    end
+
+    def check(value, label = nil)
+      label = value if label.nil?
+      [false, nil, 0].include?(value) ? uncheck(label) : super(label)
     end
 
   end

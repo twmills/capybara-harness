@@ -38,21 +38,41 @@ describe Capybara::Harness::Dom::Field do
       end
 
       describe ":checkbox" do
-        it "checks the box when true" do
-          page.uncheck('Terms of Use')
-          field = Capybara::Harness::Dom::Field.new(:terms, as: :checkbox, label: 'Terms of Use')
-          field.fill({ terms: true })
-          page.find_field('Terms of Use').should be_checked
+        context "when the supplied value is boolean" do
+          let(:field) { Capybara::Harness::Dom::Field.new(:terms, as: :checkbox, label: 'Terms of Use') }
+
+          it "checks the box when true" do
+            page.uncheck('Terms of Use')
+            field.fill({ terms: true })
+            page.find_field('Terms of Use').should be_checked
+          end
+
+          it "unchecks the box when false" do
+            page.check('Terms of Use')
+            field.fill({ terms: false })
+            page.find_field('Terms of Use').should_not be_checked
+          end
         end
 
-        it "unchecks the box when true" do
-          page.check('Terms of Use')
-          field = Capybara::Harness::Dom::Field.new(:terms, as: :checkbox, label: 'Terms of Use')
-          field.fill({ terms: false })
+        context "when the supplied value is an integer" do
+
+        end
+
+
+        context "when the supplied value is an array" do
+
+        end
+
+        context "when the supplied value is a hash" do
+
+        end
+
+
+        it "checks multiple values" do
+          field = Capybara::Harness::Dom::Field.new(:pets, as: :checkboxes)
+          field.fill({ pets: {  }})
           page.find_field('Terms of Use').should_not be_checked
         end
-
-        it "checks multiple values"
 
         it "unchecks multiple values"
       end

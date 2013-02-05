@@ -10,7 +10,7 @@ module Capybara::Harness::Dom
       options = args.last.is_a?(Hash) ? args.pop : {}
 
       args.each do |field_name|
-        fields << Capybara::Harness::Dom::Field.new(options.merge(:name => field_name))
+        fields << Capybara::Harness::Dom::Field.new(field_name, options)
       end
     end
 
