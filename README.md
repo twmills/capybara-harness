@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/twmills/capybara-harness.png)](https://codeclimate.com/github/twmills/capybara-harness)
+
 # Capybara::Harness
 
 ![alt text](http://upload.wikimedia.org/wikipedia/commons/b/bc/Capybara_harness.jpg "A dignified, harness-wearing capybara")
