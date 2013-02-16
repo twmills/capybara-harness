@@ -1,5 +1,5 @@
 [![Code Climate](https://codeclimate.com/github/twmills/capybara-harness.png)](https://codeclimate.com/github/twmills/capybara-harness)
-[![Build Status](https://travis-ci.org/[YOUR_GITHUB_USERNAME]/[YOUR_PROJECT_NAME].png)](https://travis-ci.org/twmills/capybara-harness)
+[![Build Status](https://travis-ci.org/twmills/capybara-harness.png)](https://travis-ci.org/twmills/capybara-harness)
 
 # Capybara::Harness
 
